@@ -24,4 +24,12 @@ public class NewsLetterService {
 
         //Validations could be here.
     }
+
+
+    public NewsLetter getAllNewsLetterByID(
+            Integer id) {
+        return newsLetterRepository.findById(id)
+                .orElseThrow(() -> new IllegalStateException(
+                        id + "not found"));
+    }
 }

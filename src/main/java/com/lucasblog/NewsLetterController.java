@@ -21,12 +21,21 @@ public class NewsLetterController {
         this.newsLetterService = newsLetterService;
     }
 
+    //GET
     @GetMapping
-
     public List<NewsLetter> getNewsLetters() {
         return newsLetterService.getAllNewsLetters();
     }
 
+    //GET BY ID
+    @GetMapping("{id}")
+    public NewsLetter getNewsLettersById(
+            @PathVariable Integer id
+    ) {
+        return newsLetterService.getAllNewsLetterByID(id);
+    }
+
+    //POST
     @PostMapping
     public void addNewsLetter(
            @RequestBody NewsLetter newsLetter) {
