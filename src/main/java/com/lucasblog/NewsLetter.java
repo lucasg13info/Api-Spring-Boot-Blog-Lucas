@@ -1,12 +1,19 @@
 package com.lucasblog;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+
 import java.util.Objects;
 
+@Entity
 public class NewsLetter {
+
+    @Id
     private Integer id;
     private String firstName;
     private String lastName;
     private String email;
+
 
     public NewsLetter() {
     }
