@@ -35,6 +35,29 @@ public class NewsLetterController {
         return newsLetterService.getAllNewsLetterByID(id);
     }
 
+
+
+    //DELETE BY ID
+    @DeleteMapping("{id}")
+    public NewsLetter deleteNewsLetterByID(
+            @PathVariable Integer id
+    ) {
+        return newsLetterService.deleteNewsLetterByID(id);
+    }
+
+
+
+    //UPDATE  BY ID
+    @PutMapping("{id}")
+    public NewsLetter updateNewsLettersById(
+            @PathVariable Integer id,
+            @RequestBody NewsLetter newsLetter
+    ) {
+        return newsLetterService.updateNewsLetterByID(id,newsLetter);
+    }
+
+
+
     //POST
     @PostMapping
     public void addNewsLetter(
