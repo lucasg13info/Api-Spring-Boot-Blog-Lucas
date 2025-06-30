@@ -17,4 +17,11 @@ public class NewsLetterService {
     public List<NewsLetter> getAllNewsLetters() {
         return newsLetterRepository.findAll();
     }
+
+    public void insertNewsLetter(
+            NewsLetter newsLetter) {
+        newsLetterRepository.save(newsLetter);
+
+        //Validations could be here.
+    }
 }
