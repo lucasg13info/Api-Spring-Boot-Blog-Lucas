@@ -14,7 +14,7 @@ POST http://localhost:8080/api/v1/news-letters
 Content-Type: application/json
 
 {
-  "email": "4laiz@laiz.com",
+  "email": "lucas@laiz.com",
   "firstName": "Laiz",
   "lastName": "Fernandes"
 }

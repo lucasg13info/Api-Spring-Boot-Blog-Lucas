@@ -1,10 +1,7 @@
 package com.lucasblog;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-
+import jakarta.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Objects;
 
 @Entity
@@ -13,22 +10,36 @@ public class NewsLetter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String firstName;
     private String lastName;
     private String email;
 
+    @Column(updatable = false)
+    private LocalDateTime dateTime;
+
+    @PrePersist
+    public void prePersist() {
+        this.dateTime = LocalDateTime.now();
+    }
 
     public NewsLetter() {
     }
 
-    public NewsLetter(Integer id,
-                      String firstName,
-                      String lastName,
-                      String email) {
+    public NewsLetter(Integer id, String firstName, String lastName, String email) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
+    }
+
+    // ✅ Adicionando getter e setter do dateTime
+    public LocalDateTime getDateTime() {
+        return dateTime;
+    }
+
+    public void setDateTime(LocalDateTime dateTime) {
+        this.dateTime = dateTime;
     }
 
     public Integer getId() {
@@ -67,7 +78,10 @@ public class NewsLetter {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         NewsLetter that = (NewsLetter) o;
-        return Objects.equals(id, that.id) && Objects.equals(firstName, that.firstName) && Objects.equals(lastName, that.lastName) && Objects.equals(email, that.email);
+        return Objects.equals(id, that.id)
+                && Objects.equals(firstName, that.firstName)
+                && Objects.equals(lastName, that.lastName)
+                && Objects.equals(email, that.email);
     }
 
     @Override

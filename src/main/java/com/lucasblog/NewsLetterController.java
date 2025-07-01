@@ -9,6 +9,8 @@ import java.util.stream.Collectors;
 //    API File
 
 @RestController
+//@CrossOrigin(origins = "http://localhost:8081")  //Just request from this ip and port
+@CrossOrigin(origins = "*") //Acept request from any ip
 
 @RequestMapping("api/v1/news-letters")
 
